@@ -1,8 +1,9 @@
 import struct
 import wave
 
-inp = wave.open('in.wav', mode='rb')
+inp = wave.open('../in.wav', mode='rb')
 out = wave.open('result1.wav', mode='wb')
+out.setparams(inp.getparams())
 amount_frames = inp.getnframes()
 data = struct.unpack("<" + str(amount_frames) + "h", inp.readframes(amount_frames))
 updated_data = data[::2]
